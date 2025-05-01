@@ -1,0 +1,33 @@
+﻿@page
+@model _318Project.Pages.Loans.DetailsModel
+
+@{
+    ViewData["Title"] = "Loan Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Loan</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Checked Out</dt>
+        <dd class="col-sm-10">@Model.Loan.CheckoutDate.ToString("yyyy-MM-dd")</dd>
+
+        <dt class="col-sm-2">Due On</dt>
+        <dd class="col-sm-10">@Model.Loan.DueDate.ToString("yyyy-MM-dd")</dd>
+
+        <!-- Removed Returned On -->
+
+        <dt class="col-sm-2">Book</dt>
+        <dd class="col-sm-10">@Model.Loan.Book.Title</dd>
+
+        <dt class="col-sm-2">Member</dt>
+        <dd class="col-sm-10">@Model.Loan.Member.FullName</dd>
+    </dl>
+</div>
+
+<div class="mb-3">
+    <a asp-page="./Edit" asp-route-id="@Model.Loan.LoanId" class="btn btn-primary">Edit</a>
+    <a asp-page="./Index" class="btn btn-secondary">Back to List</a>
+</div>

@@ -1,0 +1,71 @@
+﻿@page
+@model _318Project.Pages.Members.DetailsModel
+
+@{
+    ViewData["Title"] = "Member Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Member</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Member.FullName)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Member.FullName)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Member.Email)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Member.Email)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Member.Phone)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Member.Phone)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Member.JoinDate)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Member.JoinDate)</dd>
+    </dl>
+</div>
+
+<div class="mb-3">
+    <a asp-page="./Edit" asp-route-id="@Model.Member.MemberId" class="btn btn-primary">Edit</a>
+    <a asp-page="./Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+<hr />
+
+<h4>Borrowing History</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Loan #</th>
+            <th>Book Title</th>
+            <th>Checked Out</th>
+            <th>Due Date</th>
+            <th>Returned On</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.LoanHistory != null && Model.LoanHistory.Any())
+        {
+            @foreach (var loan in Model.LoanHistory)
+            {
+                <tr>
+                    <td>@loan.LoanId</td>
+                    <td>@loan.Book.Title</td>
+                    <td>@loan.CheckoutDate</td>
+                    <td>@loan.DueDate</td>
+                    <td>
+                        @(loan.ReturnDate.HasValue
+                            ? loan.ReturnDate.Value.ToString("yyyy-MM-dd")
+                            : "--")
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">No borrowing history.</td>
+            </tr>
+        }
+    </tbody>
+</table>

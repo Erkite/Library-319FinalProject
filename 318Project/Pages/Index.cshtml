@@ -1,0 +1,62 @@
+﻿@page
+@model _318Project.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Library Management System";
+}
+
+<div class="text-center mt-5 mb-4">
+    <h1 class="display-4">Library Management System</h1>
+    <p class="lead">Manage books, members, loans, and fines all in one place.</p>
+</div>
+
+<div class="row justify-content-center gx-4 gy-4">
+    <div class="col-6 col-md-3">
+        <a asp-page="/Books/Index" class="btn btn-lg btn-outline-primary w-100 p-4">
+            <i class="bi bi-book"></i><br />
+            Books
+        </a>
+    </div>
+    <div class="col-6 col-md-3">
+        <a asp-page="/Members/Index" class="btn btn-lg btn-outline-success w-100 p-4">
+            <i class="bi bi-people"></i><br />
+            Members
+        </a>
+    </div>
+    <div class="col-6 col-md-3">
+        <a asp-page="/Loans/Create" class="btn btn-lg btn-outline-warning w-100 p-4">
+            <i class="bi bi-cart-plus"></i><br />
+            Check Out
+        </a>
+    </div>
+    <div class="col-6 col-md-3">
+        <a asp-page="/Loans/Index" class="btn btn-lg btn-outline-info w-100 p-4">
+            <i class="bi bi-journal-check"></i><br />
+            Checked Out Books
+        </a>
+    </div>
+    <div class="col-6 col-md-3">
+        <a asp-page="/Loans/Return" class="btn btn-lg btn-outline-danger w-100 p-4">
+            <i class="bi bi-cart-dash"></i><br />
+            Return Book
+        </a>
+    </div>
+    <div class="col-6 col-md-3">
+        <a asp-page="/Fines/Index" class="btn btn-lg btn-outline-secondary w-100 p-4">
+            <i class="bi bi-cash-stack"></i><br />
+            Manage Fines
+        </a>
+    </div>
+    <div class="col-6 col-md-3">
+        <a asp-page="/Reports/Overdue" class="btn btn-lg btn-outline-dark w-100 p-4">
+            <i class="bi bi-exclamation-triangle"></i><br />
+            Overdue Loans
+        </a>
+    </div>
+</div>
+
+<style>
+    .btn-lg i {
+        font-size: 2rem;
+    }
+</style>

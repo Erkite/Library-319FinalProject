@@ -1,0 +1,40 @@
+﻿@page
+@model _318Project.Pages.Loans.IndexModel
+
+@{
+    ViewData["Title"] = "Checked Out Books";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-success">Check Out New Book</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Checked Out</th>
+            <th>Due On</th>
+            <th>Book Title</th>
+            <th>Member Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var loan in Model.Loans)
+        {
+            <tr>
+                <td>@loan.CheckoutDate.ToString("yyyy-MM-dd")</td>
+                <td>@loan.DueDate.ToString("yyyy-MM-dd")</td>
+                <td>@loan.Book.Title</td>
+                <td>@loan.Member.FullName</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@loan.LoanId">Edit</a> |
+                    <a asp-page="Details" asp-route-id="@loan.LoanId">Details</a> |
+                    <a asp-page="Delete" asp-route-id="@loan.LoanId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

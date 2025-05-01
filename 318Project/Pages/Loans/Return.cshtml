@@ -1,0 +1,21 @@
+﻿@page
+@model _318Project.Pages.Loans.ReturnModel
+@{
+    ViewData["Title"] = "Return Book";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="SelectedLoanId">Select Loan to Return</label>
+        <select asp-for="SelectedLoanId" asp-items="Model.ActiveLoansList" class="form-control">
+            <option value="0">-- choose a loan --</option>
+        </select>
+        <span asp-validation-for="SelectedLoanId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Return</button>
+</form>
+
+<partial name="_ValidationScriptsPartial" />

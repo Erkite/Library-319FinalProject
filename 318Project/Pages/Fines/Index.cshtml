@@ -1,0 +1,41 @@
+﻿@page
+@model _318Project.Pages.Fines.IndexModel
+@{
+    ViewData["Title"] = "Manage Fines";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Fine #</th>
+                <th>Loan #</th>
+                <th>Book</th>
+                <th>Member</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var fine in Model.UnpaidFines)
+            {
+                <tr>
+                    <td>
+                        <input type="radio" asp-for="SelectedFineId" value="@fine.FineId" />
+                    </td>
+                    <td>@fine.FineId</td>
+                    <td>@fine.Loan!.LoanId</td>
+                    <td>@fine.Loan.Book.Title</td>
+                    <td>@fine.Loan.Member.FullName</td>
+                    <td>@fine.Amount.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-success">Mark as Paid</button>
+</form>
+
+<partial name="_ValidationScriptsPartial" />

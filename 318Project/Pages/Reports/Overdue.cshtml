@@ -1,0 +1,29 @@
+﻿@page
+@model _318Project.Pages.Reports.OverdueModel
+@{
+    ViewData["Title"] = "Overdue Loans Report";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Loan #</th>
+            <th>Book</th>
+            <th>Member</th>
+            <th>Days Overdue</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var o in Model.OverdueLoans)
+        {
+            <tr>
+                <td>@o.LoanId</td>
+                <td>@o.Title</td>
+                <td>@o.FullName</td>
+                <td>@o.DaysOverdue</td>
+            </tr>
+        }
+    </tbody>
+</table>

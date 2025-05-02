@@ -14,18 +14,15 @@ namespace _318Project.Pages.Loans
         private readonly LibraryContext _db;
         public CreateModel(LibraryContext db) => _db = db;
 
-        // We bind just the selected IDs
         [BindProperty]
         public int SelectedBookId { get; set; }
 
         [BindProperty]
         public int SelectedMemberId { get; set; }
 
-        // Read-only dates
         public DateOnly CheckoutDate { get; set; }
         public DateOnly DueDate { get; set; }
 
-        // Dropdown data
         public SelectList BooksList { get; set; } = default!;
         public SelectList MembersList { get; set; } = default!;
 
@@ -45,13 +42,11 @@ namespace _318Project.Pages.Loans
             CheckoutDate = DateOnly.FromDateTime(DateTime.Today);
             DueDate = CheckoutDate.AddDays(7);
 
-            // Validate selections
             if (SelectedBookId == 0)
                 ModelState.AddModelError(nameof(SelectedBookId), "Please select a book.");
             if (SelectedMemberId == 0)
                 ModelState.AddModelError(nameof(SelectedMemberId), "Please select a member.");
 
-            // Prevent double‐checkout
             if (SelectedBookId != 0)
             {
                 bool alreadyOut = await _db.Loans
@@ -63,7 +58,6 @@ namespace _318Project.Pages.Loans
             if (!ModelState.IsValid)
                 return Page();
 
-            // Compose and save the new Loan
             var loan = new Loan
             {
                 BookId = SelectedBookId,

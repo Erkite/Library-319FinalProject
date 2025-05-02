@@ -29,7 +29,6 @@
                     </ul>
 
                     @{
-                        // safely pull the current search term from the query string
                         var searchTerm = Context.Request.Query["SearchTitle"].ToString() ?? string.Empty;
                     }
                     <form asp-page="/Books/Index" method="get" class="d-flex" role="search">

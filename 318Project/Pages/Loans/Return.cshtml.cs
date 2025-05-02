@@ -1,4 +1,3 @@
-// Pages/Loans/Return.cshtml.cs
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -19,10 +18,10 @@ namespace _318Project.Pages.Loans
 
         public async Task OnGetAsync()
         {
-            // 1) fetch the active loans
+
             var active = await _loanService.GetActiveLoansAsync();
 
-            // 2) project into an anonymous type with two string properties
+
             var options = active
               .Select(l => new
               {
@@ -31,7 +30,7 @@ namespace _318Project.Pages.Loans
               })
               .ToList();
 
-            // 3) build the SelectList by naming those props
+
             ActiveLoansList = new SelectList(options, "LoanId", "Display");
         }
 

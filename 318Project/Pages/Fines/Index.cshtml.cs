@@ -32,7 +32,7 @@ namespace _318Project.Pages.Fines
             }
 
             await _fineService.PayFineAsync(SelectedFineId);
-            return RedirectToPage();  // refresh the list
+            return RedirectToPage();
         }
     }
 }

@@ -11,14 +11,14 @@ namespace _318Project.Pages.Loans
         private readonly LibraryContext _db;
         public DetailsModel(LibraryContext db) => _db = db;
 
-        // The loan we're displaying
+
         public Loan Loan { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null) return NotFound();
 
-            // Eager-load the related Book and Member
+
             Loan = await _db.Loans
                 .Include(l => l.Book)
                 .Include(l => l.Member)

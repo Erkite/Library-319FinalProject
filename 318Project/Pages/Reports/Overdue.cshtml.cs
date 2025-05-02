@@ -13,7 +13,7 @@ namespace _318Project.Pages.Reports
         private readonly LibraryContext _db;
         public OverdueModel(LibraryContext db) => _db = db;
 
-        // ViewModel list for overdue loans
+
         public IList<OverdueLoanViewModel> OverdueLoans { get; set; } = default!;
 
         public async Task OnGetAsync()
@@ -35,7 +35,6 @@ namespace _318Project.Pages.Reports
         }
     }
 
-    // View-Model for representing an overdue loan in the UI
     public class OverdueLoanViewModel
     {
         public int LoanId { get; set; }

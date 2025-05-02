@@ -12,7 +12,6 @@ namespace _318Project.Pages.Loans
         private readonly LibraryContext _db;
         public IndexModel(LibraryContext db) => _db = db;
 
-        // rename to plural for clarity
         public IList<Loan> Loans { get; set; } = default!;
 
         public async Task OnGetAsync()
@@ -20,7 +19,6 @@ namespace _318Project.Pages.Loans
             Loans = await _db.Loans
                 .Include(l => l.Book)
                 .Include(l => l.Member)
-                // if you only want active (not returned) loans:
                 .Where(l => l.ReturnDate == null)
                 .ToListAsync();
         }

@@ -18,10 +18,10 @@ namespace _318Project.Pages.Members
             _context = context;
         }
 
-        // The member to display
+
         public Member Member { get; set; } = default!;
 
-        // Borrowing history for this member
+
         public IList<Loan> LoanHistory { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -31,14 +31,14 @@ namespace _318Project.Pages.Members
                 return NotFound();
             }
 
-            // Load the member
+
             Member = await _context.Members.FindAsync(id);
             if (Member == null)
             {
                 return NotFound();
             }
 
-            // Load borrowing history: all loans by this member
+
             LoanHistory = await _context.Loans
                 .Include(l => l.Book)
                 .Where(l => l.MemberId == id)

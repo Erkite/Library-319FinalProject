@@ -30,15 +30,12 @@ namespace _318Project.Models
         [Display(Name = "Returned On")]
         public DateOnly? ReturnDate { get; set; }
 
-        // Navigation props
         public virtual Book Book { get; set; } = null!;
         public virtual Member Member { get; set; } = null!;
 
-        // ← ADD THIS:
         [InverseProperty("Loan")]
         public virtual ICollection<Fine> Fines { get; set; } = new List<Fine>();
 
-        // Computed helper (not mapped to the database)
         [NotMapped]
         public bool IsOverdue =>
             ReturnDate == null &&
